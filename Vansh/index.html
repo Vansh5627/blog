@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Fastrack: Express Yourself With Stylish Watches, Sunglasses & Perfumes |
+      Lifestyle Blog
+    </title>
+    <meta
+      name="description"
+      content="Discover Fastrack's trendy watches, bold sunglasses, and captivating perfumes. Express your unique style with our affordable fashion accessories and fragrances."
+    />
+    <meta
+      name="keywords"
+      content="Fastrack watches, Fastrack sunglasses, Fastrack perfumes, fashion accessories, stylish watches, trendy sunglasses, affordable fragrances, youth fashion, style statement, fashion-forward accessories"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap");
+
+      /* Reset and base styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+
+      /* Header styles */
+      header {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #ff3e3e;
+      }
+
+      .logo span {
+        color: #333;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+      }
+
+      nav ul li {
+        margin-left: 2rem;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      nav ul li a:hover {
+        color: #ff3e3e;
+      }
+
+      .mobile-menu {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      /* Hero section */
+      .hero {
+        height: 80vh;
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.6),
+            rgba(0, 0, 0, 0.6)
+          ),
+          url("images/banner.jpg");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #fff;
+        margin-top: 70px;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        padding: 0 2rem;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        font-weight: 300;
+      }
+
+      .cta-button {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        font-size: 0.95rem;
+        color: white;
+      }
+
+      .cta-button:hover {
+        background-color: #e53535;
+        transform: translateY(-3px);
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .logo {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+      }
+
+      /* Main content */
+      .container {
+        max-width: 900px;
+        margin: 4rem auto;
+        padding: 0 2rem;
+      }
+
+      .blog-content {
+        background-color: #fff;
+        padding: 3rem;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .blog-content h2 {
+        font-size: 2rem;
+        margin: 1.5rem 0 1rem;
+        color: #333;
+      }
+
+      .blog-content h3 {
+        font-size: 1.5rem;
+        margin: 1.5rem 0 1rem;
+        color: #444;
+      }
+
+      .blog-content p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .blog-content ul,
+      .blog-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 2rem;
+      }
+
+      .blog-content li {
+        margin-bottom: 0.5rem;
+      }
+
+      .blog-image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 2rem 0;
+      }
+
+      .quote {
+        font-style: italic;
+        font-size: 1.2rem;
+        border-left: 4px solid #ff3e3e;
+        padding-left: 1.5rem;
+        margin: 2rem 0;
+      }
+
+      .conclusion {
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+      }
+
+      .cta-section {
+        background-color: #f0f5ff;
+        background-image: url("images/images.jpg");
+        background-size: cover;
+        background-position: center;
+        padding: 3rem;
+        text-align: center;
+        border-radius: 8px;
+        margin: 3rem 0;
+        position: relative;
+        color: #fff;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 8px;
+        z-index: 1;
+      }
+
+      .cta-section h3,
+      .cta-section p,
+      .cta-section a {
+        position: relative;
+        z-index: 2;
+      }
+
+      .cta-section h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: #f9f9f9;
+      }
+
+      .cta-section p {
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+      }
+
+      /* Related posts section */
+      .related-posts {
+        margin-top: 4rem;
+      }
+
+      .related-posts h3 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .post-card {
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+      }
+
+      .post-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .post-image {
+        height: 180px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .post-content {
+        padding: 1.5rem;
+      }
+
+      .post-content h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .post-content p {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .read-more {
+        font-size: 0.9rem;
+        color: #ff3e3e;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      /* Newsletter section */
+      .newsletter {
+        background-color: #333;
+        color: #fff;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .newsletter-container {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .newsletter h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .newsletter p {
+        margin-bottom: 2rem;
+      }
+
+      .newsletter-form {
+        display: flex;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .newsletter-form input {
+        flex: 1;
+        padding: 0.8rem 1rem;
+        border: none;
+        border-radius: 50px 0 0 50px;
+        font-size: 1rem;
+      }
+
+      .newsletter-form button {
+        background-color: #ff3e3e;
+        color: #fff;
+        border: none;
+        padding: 0 1.5rem;
+        border-radius: 0 50px 50px 0;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color 0.3s;
+      }
+
+      .newsletter-form button:hover {
+        background-color: #e53535;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #222;
+        color: #fff;
+        padding: 3rem 2rem;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-column h4 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        color: #fff;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-column ul li a {
+        text-decoration: none;
+        color: #bbb;
+        transition: color 0.3s;
+      }
+
+      .footer-column ul li a:hover {
+        color: #ff3e3e;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-icons a {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-color: #333;
+        border-radius: 50%;
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+        transition: background-color 0.3s;
+      }
+
+      .social-icons a:hover {
+        background-color: #ff3e3e;
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        margin-top: 2rem;
+        border-top: 1px solid #444;
+        color: #bbb;
+      }
+
+      /* Animation */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        animation: fadeIn 1s ease-out;
+      }
+
+      /* Responsive styles */
+      @media (max-width: 992px) {
+        .posts-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .blog-content {
+          padding: 2rem;
+        }
+
+        nav ul {
+          display: none;
+          position: absolute;
+          top: 70px;
+          left: 0;
+          width: 100%;
+          background-color: #fff;
+          flex-direction: column;
+          padding: 1rem 0;
+          box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.active ul {
+          display: flex;
+        }
+
+        nav ul li {
+          margin: 0;
+          padding: 1rem 2rem;
+        }
+
+        .mobile-menu {
+          display: block;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .posts-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+        }
+
+        .newsletter-form input {
+          border-radius: 50px;
+          margin-bottom: 1rem;
+        }
+
+        .newsletter-form button {
+          border-radius: 50px;
+          padding: 0.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <div class="logo">Fastrack<span>Blog</span></div>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Watches</a></li>
+            <li><a href="#">Trends</a></li>
+            <li><a href="#">Style Guide</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+          <div class="mobile-menu">☰</div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>
+          Express Your Unique Style: Fastrack's Ultimate Fashion Accessories
+        </h1>
+        <p>
+          Discover our bold collection of watches, sunglasses, and perfumes
+          designed for the youth who dare to stand out
+        </p>
+        <a href="https://vansh5627.github.io/Watch-Fastrack/" class="cta-button"
+          >Explore Our Collection</a
+        >
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+      <article class="blog-content fade-in">
+        <p class="date">Published on March 8, 2025 | By Watch Enthusiast</p>
+
+        <p>
+          In a world where personal style speaks volumes, Fastrack has emerged
+          as the ultimate brand for the bold, the fearless, and the
+          trend-setting youth of today. From eye-catching watches that do more
+          than tell time to statement sunglasses that turn heads and captivating
+          perfumes that leave lasting impressions – Fastrack offers the complete
+          package for those who refuse to blend in. Let's dive into why
+          Fastrack's trio of fashion essentials should be your go-to choice for
+          expressing your unique personality.
+        </p>
+
+        <img
+          src="images/sundar.jpg"
+          alt="Fastrack fashion accessories collection"
+          class="blog-image"
+        />
+
+        <h2>Three Ways to Make a Statement: Fastrack's Fashion Essentials</h2>
+
+        <p>
+          Fastrack understands that today's youth demands more than just
+          functional products – they crave accessories that reflect their
+          individuality, attitude, and energy. That's why our collection spans
+          three essential categories designed to complement and enhance your
+          personal style.
+        </p>
+
+        <h3>1. Watches That Speak Your Language</h3>
+
+        <p>
+          A Fastrack watch isn't just a timepiece – it's a declaration of who
+          you are. With bold designs, vibrant colors, and innovative features,
+          our watches perfectly balance functionality with head-turning style.
+          Whether you're into minimalist chic, sporty vibes, or avant-garde
+          designs, we've crafted collections that resonate with every
+          personality.
+        </p>
+
+        <p>
+          Our latest watch collections feature cutting-edge materials, striking
+          color combinations, and unexpected details that make them instantly
+          recognizable. From water-resistant models perfect for adventure
+          seekers to sleek digital displays for tech enthusiasts, Fastrack
+          watches are designed to keep up with your dynamic lifestyle while
+          making a powerful style statement.
+        </p>
+
+        <h3>2. Sunglasses That Define Your Attitude</h3>
+
+        <p>
+          Nothing completes an outfit quite like the perfect pair of sunglasses,
+          and Fastrack's eyewear collection delivers style with substance. Our
+          sunglasses combine trend-forward designs with quality materials and UV
+          protection, ensuring you look amazing while keeping your eyes safe.
+        </p>
+
+        <p>
+          From oversized frames that channel retro vibes to sleek aviators that
+          never go out of style, our sunglasses collection offers endless
+          possibilities to express yourself. With polarized options for the
+          outdoor enthusiasts and gradient lenses for the fashion-forward,
+          Fastrack sunglasses are the ultimate accessory for year-round style.
+        </p>
+
+        <div class="quote">
+          "Fashion is about more than what you wear – it's about how you wear
+          it. With Fastrack, confidence comes standard with every accessory."
+        </div>
+
+        <h3>3. Perfumes That Leave a Lasting Impression</h3>
+
+        <p>
+          Complete your personal style statement with Fastrack's collection of
+          signature scents. Our perfumes and fragrances are crafted to capture
+          attention and create memorable impressions wherever you go. From
+          fresh, energetic daytime scents to sophisticated evening fragrances,
+          we've created options for every occasion.
+        </p>
+
+        <p>
+          Unlike generic mass-market perfumes, Fastrack fragrances are designed
+          with unique notes and surprising combinations that stand out from the
+          crowd. Affordable luxury at its finest, our perfumes prove that making
+          a sensory impact doesn't require spending a fortune.
+        </p>
+
+        <img
+          src="images/perfumes.webp"
+          alt="Fastrack perfume collection"
+          class="blog-image"
+        />
+
+        <h2>Trending Now: What's Hot in Fastrack's 2025 Collection</h2>
+
+        <p>
+          Every season brings fresh innovations to the Fastrack lineup, and 2025
+          is no exception. Here are the standout trends currently dominating our
+          collections:
+        </p>
+
+        <h3>Neo-Neon Revolution</h3>
+
+        <p>
+          Electric colors are making a major comeback across all our product
+          lines. From watches with neon accents to sunglasses with bold colored
+          frames and perfumes in vibrant packaging, these eye-catching hues are
+          perfect for those who want to make an unmistakable statement.
+        </p>
+
+        <h3>Sustainable Style</h3>
+
+        <p>
+          Our new eco-conscious lines feature recycled materials, reduced
+          packaging, and environmentally friendly production processes without
+          compromising on style or quality. Looking good while doing good has
+          never been easier with Fastrack's green initiatives.
+        </p>
+
+        <h3>Digital-Physical Fusion</h3>
+
+        <p>
+          Our latest watches bridge the gap between traditional timepieces and
+          smart technology, offering subtle connectivity features without the
+          bulky look of typical smartwatches. These hybrid designs give you the
+          best of both worlds – classic style with modern functionality.
+        </p>
+
+        <h3>Gender-Fluid Collections</h3>
+
+        <p>
+          Breaking away from restrictive conventions, Fastrack's newest
+          collections are designed for expression regardless of gender. Our
+          accessories focus on personal style rather than outdated categories,
+          allowing everyone to choose products based on preference rather than
+          prescribed norms.
+        </p>
+
+        <h2>Finding Your Perfect Fastrack Style</h2>
+
+        <p>
+          With such a diverse range of products, you might wonder where to begin
+          your Fastrack journey. Here's our guide to curating your personal
+          Fastrack collection:
+        </p>
+
+        <h3>Start With Your Signature Piece</h3>
+
+        <p>
+          Choose the accessory that speaks to you most – whether it's a bold
+          watch, statement sunglasses, or captivating fragrance. This
+          cornerstone item will become your style signature and set the tone for
+          future additions.
+        </p>
+
+        <h3>Consider Your Lifestyle</h3>
+
+        <p>
+          Are you constantly on the move? Look for durable watches with
+          stopwatch features and sporty sunglasses. More of a social butterfly?
+          Our evening-ready timepieces and longer-lasting perfumes might be your
+          perfect match.
+        </p>
+
+        <h3>Mix and Match</h3>
+
+        <p>
+          Don't be afraid to create your own Fastrack ecosystem. A watch from
+          our Minimalist collection can pair perfectly with bold sunglasses from
+          our Urban line, creating a balanced look that's uniquely yours.
+        </p>
+
+        <h3>Seasonal Refreshes</h3>
+
+        <p>
+          Fastrack's affordable price points make it easy to update your
+          collection with seasonal trends. Consider adding limited-edition
+          pieces to keep your style fresh and current throughout the year.
+        </p>
+
+        <div class="cta-section">
+          <h3>Complete Your Style Trinity</h3>
+          <p>
+            Fastrack offers a stunning collection of watches, sunglasses, and
+            perfumes designed to complement each other and enhance your personal
+            style. Express yourself with our affordable yet striking accessories
+            that make every day an opportunity to stand out.
+          </p>
+          <a
+            href="https://vansh5627.github.io/Watch-Fastrack/"
+            class="cta-button"
+            >Shop the Collection</a
+          >
+        </div>
+
+        <div class="conclusion">
+          <h2>Why Fastrack is the Ultimate Fashion Statement</h2>
+
+          <p>
+            In a world where personal identity is increasingly expressed through
+            carefully curated style choices, Fastrack stands out as a brand that
+            truly understands youth culture. Our accessories aren't just
+            products – they're extensions of your personality, tools for
+            self-expression, and symbols of your unique perspective.
+          </p>
+
+          <p>
+            What sets Fastrack apart is our commitment to accessible fashion. We
+            believe that making a statement shouldn't break the bank. Our
+            watches, sunglasses, and perfumes offer premium quality and
+            eye-catching design at price points that allow you to build a
+            diverse collection that can evolve with your style.
+          </p>
+
+          <p>
+            When you choose Fastrack, you're not just buying accessories –
+            you're joining a community of bold, confident individuals who refuse
+            to blend into the background. You're aligning yourself with a brand
+            that celebrates individuality, embraces trends without being defined
+            by them, and understands that true style comes from authentic
+            self-expression.
+          </p>
+
+          <p>
+            Ready to elevate your style game?
+            <a href="https://vansh5627.github.io/Watch-Fastrack/"
+              >Explore the complete Fastrack collection</a
+            >
+            today and discover the perfect accessories to express who you are –
+            boldly, unapologetically, and with undeniable style.
+          </p>
+        </div>
+      </article>
+
+      <!-- Related Posts -->
+      <section class="related-posts">
+        <h3>You Might Also Enjoy</h3>
+
+        <div class="posts-grid">
+          <div class="post-card">
+            <div
+              class="post-image"
+              style="background-image: url('images/scent.jpg')"
+            ></div>
+            <div class="post-content">
+              <h4>
+                Finding Your Signature Scent: A Guide to Fastrack Perfumes
+              </h4>
+              <p>
+                How to choose the perfect fragrance for your personality, mood,
+                and lifestyle from our diverse collection.
+              </p>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="post-card">
+            <div
+              class="post-image"
+              style="background-image: url('images/sung.jpg')"
+            ></div>
+            <div class="post-content">
+              <h4>Summer Style Guide: Matching Sunglasses to Face Shapes</h4>
+              <p>
+                Discover which Fastrack sunglasses styles perfectly complement
+                your unique features for maximum impact.
+              </p>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="post-card">
+            <div
+              class="post-image"
+              style="background-image: url('images/teesra.webp')"
+            ></div>
+            <div class="post-content">
+              <h4>Accessory Layering: Creating the Perfect Fastrack Look</h4>
+              <p>
+                Expert tips on combining watches, sunglasses, and fragrances for
+                a cohesive style statement that turns heads.
+              </p>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <div class="newsletter-container">
+        <h3>Stay Updated with Watch Trends</h3>
+        <p>
+          Subscribe to our newsletter for style tips, exclusive offers, and
+          early access to new collections.
+        </p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-column">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="#">Watches</a></li>
+            <li><a href="#">Sunglasses</a></li>
+            <li><a href="#">Perfumes</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Bestsellers</a></li>
+            <li><a href="#">Special Offers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>About Us</h4>
+          <ul>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">Craftsmanship</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Shipping & Returns</a></li>
+            <li><a href="#">Watch Care</a></li>
+            <li><a href="#">Size Guide</a></li>
+            <li><a href="#">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Connect With Us</h4>
+          <p>
+            Follow us for the latest updates, behind-the-scenes content, and
+            exclusive offers.
+          </p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; 2025 Fastrack. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuButton = document.querySelector(".mobile-menu");
+      const nav = document.querySelector("nav");
+
+      mobileMenuButton.addEventListener("click", () => {
+        nav.classList.toggle("active");
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href").substring(1);
+          if (targetId) {
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: "smooth",
+              });
+            }
+          }
+        });
+      });
+
+      // Intersection Observer for fade-in animation
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(
+          ".blog-content h2, .blog-content h3, .blog-content p, .blog-content img, .post-card"
+        )
+        .forEach((element) => {
+          element.classList.remove("fade-in");
+          observer.observe(element);
+        });
+
+      // Form submission
+      const newsletterForm = document.querySelector(".newsletter-form");
+
+      newsletterForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const emailInput = this.querySelector('input[type="email"]');
+
+        if (emailInput.value) {
+          // Simulate submission
+          this.innerHTML =
+            '<p style="font-size: 1.2rem;">Thank you for subscribing!</p>';
+        }
+      });
+    </script>
+  </body>
+</html>
